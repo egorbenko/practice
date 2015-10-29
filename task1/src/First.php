@@ -3,7 +3,7 @@
 namespace task1\src;
 
 
-class First
+class First extends AbstractClass
 {
 
     /**
