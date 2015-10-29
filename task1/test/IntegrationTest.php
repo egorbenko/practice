@@ -1,5 +1,7 @@
 <?php
 
+use task1\src\Runner;
+
 class IntegrationTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -10,7 +12,7 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
      */
     public function the_runner_can_execute_a_closure_with_a_fake_this_object()
     {
-        $runner = new \task1\Runner();
+        $runner = new Runner();
         $strategy = function() {
             $this->logGreeting("hello world");
             return $this->getAnswer() === 42;
