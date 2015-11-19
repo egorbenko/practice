@@ -3,7 +3,7 @@
 namespace task1;
 
 
-class GreeterPlugin
+class GreeterPlugin implements BoundObjectPlugin
 {
     public function logGreeting($greeting)
     {

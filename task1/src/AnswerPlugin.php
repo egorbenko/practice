@@ -3,7 +3,7 @@
 namespace task1;
 
 
-class AnswerPlugin
+class AnswerPlugin implements BoundObjectPlugin
 {
     public function getAnswer()
     {
