@@ -1,6 +1,6 @@
 <?php
 
-namespace task1\src;
+namespace task1;
 
 
 class AnswerPlugin

@@ -1,6 +1,6 @@
 <?php
 
-use task1\src\Runner;
+use task1\Runner;
 
 class IntegrationTest extends \PHPUnit_Framework_TestCase
 {
