@@ -10,7 +10,7 @@ class Runner
      */
     private $plugins = [];
 
-    public function __construct(ICommunicate $plugin)
+    public function __construct()
     {
 
     }
