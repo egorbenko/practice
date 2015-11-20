@@ -9,13 +9,23 @@ class Runner
      * @var BoundObjectPlugin[]
      */
     private $plugins = [];
+    /**
+     * @var Runner
+     */
+    private $runner;
 
     public function __construct()
     {
-        $this->plugins = $this->getPlugins();
+        $this->plugins = $this->newDefaultPlugins();
+        $this->runner = $this->getRunnerInstance();
     }
 
-    private function getPlugins()
+    private function getRunnerInstance()
+    {
+        return new Runner();
+    }
+
+    private function newDefaultPlugins()
     {
         $plugins  = [
             'answerPlugin' => new AnswerPlugin(),
@@ -27,6 +37,6 @@ class Runner
 
     public function execute(\Closure $closure)
     {
-
+        return $closure->call($this->runner);
     }
 }
