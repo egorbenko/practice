@@ -17,10 +17,10 @@ class Runner
     public function __construct()
     {
         $this->plugins = $this->newDefaultPlugins();
-        $this->runner = $this->getRunnerInstance();
+        $this->runner = $this->newRunnerInstance();
     }
 
-    private function getRunnerInstance()
+    private function newRunnerInstance()
     {
         return new Runner();
     }
