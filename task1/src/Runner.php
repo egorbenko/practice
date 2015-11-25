@@ -15,6 +15,11 @@ class Runner
         $this->plugins = $this->newDefaultPlugins();
     }
 
+    public function __call($name, $arguments)
+    {
+        $this->plugins[$name]($arguments);
+    }
+
     private function newDefaultPlugins()
     {
         $plugins  = [
