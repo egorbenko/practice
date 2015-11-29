@@ -7,7 +7,7 @@ class AnswerPlugin implements BoundObjectPlugin
 {
     public function __invoke()
     {
-        $this->getAnswer();
+        return $this->getAnswer();
     }
 
     public function getAnswer()

@@ -15,21 +15,16 @@ class Runner
         $this->plugins = $this->newDefaultPlugins();
     }
 
-    public function __call($name, $arguments = null)
+    public function __call($name, $arguments)
     {
-        foreach ($this->plugins as $plugin) {
-            if (method_exists($plugin, $name)) {
-                $plugin($arguments);
-            }
-        }
-
+        return $this->plugins[$name]($arguments);
     }
 
     private function newDefaultPlugins()
     {
         $plugins  = [
-            'AnswerPlugin' => new AnswerPlugin(),
-            'GreeterPlugin' => new GreeterPlugin(),
+            'getAnswer' => new AnswerPlugin(),
+            'logGreeting' => new GreeterPlugin(),
         ];
 
         return $plugins;
