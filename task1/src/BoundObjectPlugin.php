@@ -4,5 +4,5 @@ namespace task1;
 
 interface BoundObjectPlugin
 {
-    public function __invoke(array $params = null);
+    public function __invoke(array $params = []);
 }

@@ -5,7 +5,7 @@ namespace task1;
 
 class GreeterPlugin implements BoundObjectPlugin
 {
-    public function __invoke(array $greeting = null)
+    public function __invoke(array $greeting = [])
     {
         $this->logGreeting($greeting[0]);
     }

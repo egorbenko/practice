@@ -5,7 +5,7 @@ namespace task1;
 
 class AnswerPlugin implements BoundObjectPlugin
 {
-    public function __invoke(array $params = null)
+    public function __invoke(array $params = [])
     {
         return $this->getAnswer();
     }
