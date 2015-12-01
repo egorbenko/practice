@@ -9,10 +9,16 @@ class Runner
      * @var BoundObjectPlugin[]
      */
     private $plugins = [];
+    private $strategy;
 
     public function __construct()
     {
         $this->plugins = $this->newDefaultPlugins();
+        $this->strategy = function() {
+            $this->logGreeting("hello world");
+            $this->execute($this->strategy);
+            return $this->getAnswer() === 42;
+        };
     }
 
     public function __call($name, $arguments)
@@ -37,5 +43,10 @@ class Runner
     public function execute(\Closure $closure)
     {
         return $closure->call($this);
+    }
+
+    public function getClosure()
+    {
+        return $this->strategy;
     }
 }
