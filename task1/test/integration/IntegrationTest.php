@@ -21,4 +21,20 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($evaluation);
     }
+
+    /**
+     * Integration test for runner executing endless recursion
+     *
+     * @test
+     */
+    public function test_runner_execute_endless_recursion()
+    {
+        $runner = new Runner();
+        $strategy = function() use (&$strategy) {
+            $this->execute($strategy);
+        };
+        $evaluation = $runner->execute($strategy);
+
+        $this->assertTrue($evaluation);
+    }
 }
