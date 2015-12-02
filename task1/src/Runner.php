@@ -10,7 +10,6 @@ class Runner
      */
     private $plugins = [];
     private $strategy;
-    private $executed = false;
 
     public function __construct()
     {
@@ -43,10 +42,6 @@ class Runner
 
     public function execute(\Closure $closure)
     {
-        if ($this->executed) {
-            throw new \Exception("Endless recursion");
-        }
-        $this->executed = true;
         return $closure->call($this);
     }
 
