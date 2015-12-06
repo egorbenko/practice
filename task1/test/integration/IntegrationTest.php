@@ -19,6 +19,7 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
         };
         $evaluation = $runner->execute($strategy);
 
+        $this->expectOutputString("hello world");
         $this->assertTrue($evaluation);
     }
 
