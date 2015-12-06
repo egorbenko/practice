@@ -25,7 +25,7 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
     /**
      * Integration test for runner executing endless recursion
      *
-     * @test
+     * @expectedException Exception
      */
     public function test_runner_execute_endless_recursion()
     {
@@ -33,8 +33,6 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
         $strategy = function() use (&$strategy) {
             $this->execute($strategy);
         };
-        $evaluation = $runner->execute($strategy);
-
-        $this->assertTrue($evaluation);
+        $runner->execute($strategy);
     }
 }
