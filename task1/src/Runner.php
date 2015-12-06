@@ -36,6 +36,6 @@ class Runner
 
     public function execute(\Closure $closure)
     {
-        return $closure->call($this);
+        return $closure->call(new RestrictedEnvironment($this->plugins));
     }
 }
