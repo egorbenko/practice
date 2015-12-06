@@ -15,6 +15,15 @@ class Runner
         $this->plugins = $this->newDefaultPlugins();
     }
 
+    public function __call($name, $arguments)
+    {
+        if (array_key_exists($name, $this->plugins)) {
+            return $this->plugins[$name]($arguments);
+        }
+
+        throw new \Exception("Plugin: '" . $name . "' not found.");
+    }
+
     private function newDefaultPlugins()
     {
         $plugins  = [
@@ -27,6 +36,6 @@ class Runner
 
     public function execute(\Closure $closure)
     {
-        return $closure->call(new RestrictedEnvironment($this->plugins));
+        return $closure->call($this);
     }
 }
