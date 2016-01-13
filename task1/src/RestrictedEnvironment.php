@@ -6,20 +6,19 @@ namespace task1;
 
 class RestrictedEnvironment
 {
-    private $plugins;
-
     public function __construct($plugins)
     {
-        $this->plugins = [
-            spl_object_hash($this) => $plugins
+        $hashedPropertyContainer = spl_object_hash($this);
+        $this->$hashedPropertyContainer = [
+            'plugins' => $plugins
         ];
     }
 
     public function __call($name, $arguments)
     {
-        $hash = spl_object_hash($this);
-        if (array_key_exists($name, $this->plugins[$hash])) {
-            return $this->plugins[$hash][$name]($arguments);
+        $hashedPropertyContainer = spl_object_hash($this);
+        if (array_key_exists($name, $this->$hashedPropertyContainer['plugins'])) {
+            return $this->$hashedPropertyContainer['plugins'][$name]($arguments);
         }
 
         throw new \Exception("Plugin: '" . $name . "' not found.");
